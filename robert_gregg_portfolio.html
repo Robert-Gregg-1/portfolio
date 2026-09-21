@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Robert Gregg — sports marketing, broadcast statistics, and applied business analytics portfolio." />
+  <meta name="theme-color" content="#000e23" />
+  <title>Robert Gregg | Sports & Data Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#000e23',
+            ink2: '#14243a',
+            razor: '#ad2e40',
+            razorDark: '#8c142a',
+            paper: '#f8f9ff',
+            mist: '#f0f4fc',
+            line: '#d8dde7',
+            copy: '#44474d'
+          },
+          fontFamily: {
+            display: ['Oswald', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'monospace']
+          },
+          boxShadow: {
+            card: '0 8px 30px rgba(0, 14, 35, 0.06)',
+            lift: '0 18px 45px rgba(0, 14, 35, 0.11)'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; }
+    section { scroll-margin-top: 88px; }
+    ::selection { background: #14243a; color: white; }
+    .nav-link.active { color: #000e23; }
+    .nav-link.active::after { transform: scaleX(1); }
+    .nav-link::after {
+      content: '';
+      display: block;
+      height: 2px;
+      margin-top: 7px;
+      background: #ad2e40;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .2s ease;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+    .exp-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .28s ease; }
+    .exp-card[data-expanded="true"] .exp-panel { grid-template-rows: 1fr; }
+    .exp-panel > div { overflow: hidden; }
+    .interest-card::before {
+      content: '';
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 3px;
+      background: #ad2e40;
+      opacity: 0;
+      transform: scaleX(.55);
+      transform-origin: left;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .interest-card:hover::before { opacity: 1; transform: scaleX(1); }
+    .focus-ring:focus-visible { outline: 3px solid rgba(173, 46, 64, .28); outline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body class="bg-paper font-body text-ink antialiased">
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-line/70 bg-paper/92 backdrop-blur-xl">
+    <div class="mx-auto flex h-[70px] max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
+      <a href="#profile" class="focus-ring font-display text-xl font-semibold uppercase tracking-[0.08em]">Robert Gregg</a>
+
+      <nav class="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
+        <a class="nav-link active focus-ring text-xs font-semibold uppercase tracking-[0.13em] text-copy" href="#profile">Profile</a>
+        <a class="nav-link focus-ring text-xs font-semibold uppercase tracking-[0.13em] text-copy" href="#experience">Experience</a>
+        <a class="nav-link focus-ring text-xs font-semibold uppercase tracking-[0.13em] text-copy" href="#analytics">Analytics</a>
+        <a class="nav-link focus-ring text-xs font-semibold uppercase tracking-[0.13em] text-copy" href="#interests">Interests</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="#contact" class="focus-ring hidden items-center gap-2 rounded-md bg-razor px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white shadow-sm transition hover:bg-razorDark sm:inline-flex">
+          <span class="material-symbols-outlined text-[17px]">send</span>
+          Let's Connect
+        </a>
+        <button id="menuButton" class="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-md border border-line bg-white text-ink lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden border-t border-line bg-paper px-5 py-4 lg:hidden">
+      <nav class="mx-auto grid max-w-7xl gap-1" aria-label="Mobile navigation">
+        <a class="mobile-link rounded-md px-3 py-3 text-sm font-semibold uppercase tracking-[0.08em] hover:bg-mist" href="#profile">Profile</a>
+        <a class="mobile-link rounded-md px-3 py-3 text-sm font-semibold uppercase tracking-[0.08em] hover:bg-mist" href="#experience">Experience</a>
+        <a class="mobile-link rounded-md px-3 py-3 text-sm font-semibold uppercase tracking-[0.08em] hover:bg-mist" href="#analytics">Analytics</a>
+        <a class="mobile-link rounded-md px-3 py-3 text-sm font-semibold uppercase tracking-[0.08em] hover:bg-mist" href="#interests">Interests</a>
+        <a class="mobile-link mt-2 rounded-md bg-razor px-3 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white" href="#contact">Let's Connect</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="pt-[70px]">
+    <section id="profile" class="relative overflow-hidden bg-paper px-5 pb-20 pt-14 sm:px-6 lg:px-8 lg:pb-24 lg:pt-20">
+      <div class="pointer-events-none absolute right-[-9rem] top-[-11rem] h-[28rem] w-[28rem] rounded-full border border-line/70"></div>
+      <div class="pointer-events-none absolute right-[-4rem] top-[-6rem] h-[18rem] w-[18rem] rounded-full border border-line/50"></div>
+      <div class="relative mx-auto max-w-7xl">
+        <div>
+          <h1 class="max-w-5xl font-display text-[44px] font-bold uppercase leading-[0.98] tracking-[-0.025em] sm:text-[60px] lg:text-[76px]">Sports Expertise<br class="hidden sm:block"> &amp; Data Analysis</h1>
+          <p class="mt-7 max-w-5xl text-[17px] leading-7 text-copy sm:text-[18px] sm:leading-8">Assistant Director of Digital Marketing at the University of Arkansas with experience across sports marketing, communications, and operations. Currently pursuing an M.S. in Applied Business Analytics to expand that foundation into data-driven strategy and decision-making across college athletics and professional sports.</p>
+        </div>
+
+        <div class="mt-12 grid overflow-hidden rounded-lg border border-line bg-white shadow-card md:grid-cols-3">
+          <div class="border-b border-line p-5 md:border-b-0 md:border-r md:p-6">
+            <div class="font-mono text-[10px] font-semibold uppercase tracking-[0.17em] text-gray-500">Current Role</div>
+            <div class="mt-2 text-[15px] font-semibold">Assistant Director of Digital Marketing</div>
+          </div>
+          <div class="border-b border-line p-5 md:border-b-0 md:border-r md:p-6">
+            <div class="font-mono text-[10px] font-semibold uppercase tracking-[0.17em] text-gray-500">Graduate Study</div>
+            <div class="mt-2 text-[15px] font-semibold">M.S., Applied Business Analytics</div>
+          </div>
+          <div class="p-5 md:p-6">
+            <div class="font-mono text-[10px] font-semibold uppercase tracking-[0.17em] text-gray-500">Career Direction</div>
+            <div class="mt-2 text-[15px] font-semibold">College &amp; Professional Sports Analytics</div>
+          </div>
+        </div>
+
+        <div class="mt-16 grid gap-8 border-t border-line pt-12 lg:grid-cols-12 lg:gap-14">
+          <div class="lg:col-span-5">
+            <h2 class="font-display text-[40px] font-bold uppercase leading-[1.02] tracking-[-0.02em] sm:text-[50px]">Built inside sports.<br><span class="text-razor">Moving into data.</span></h2>
+          </div>
+          <div class="lg:col-span-7 lg:pt-1">
+            <p class="text-[22px] leading-[1.35] sm:text-[25px]">My career has developed at the intersection of <span class="font-semibold">audiences, information, and the game itself.</span></p>
+            <p class="mt-5 max-w-3xl text-[17px] leading-8 text-copy">At the University of Arkansas, I work across email marketing, automation, mobile content, and social media to help connect fans with the department. With ESPN, I turn live statistics and research into context that helps production teams and commentators tell the story of a game in real time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="bg-mist px-5 py-20 sm:px-6 lg:px-8 lg:py-24">
+      <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-4 lg:sticky lg:top-28 lg:self-start">
+          <h2 class="font-display text-4xl font-semibold uppercase leading-tight">Sports Industry Experience</h2>
+          <p class="mt-4 max-w-sm text-[15px] leading-7 text-copy">Experience across collegiate athletics, sports broadcasting, and player development, connecting athletic departments, media networks, and athletes.</p>
+          <a class="focus-ring mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-razor hover:text-razorDark" href="https://drive.google.com/file/d/1bzS2hDfV2D6RA1pTnTsYyfRQ00kZHzta/view?usp=sharing" target="_blank" rel="noopener noreferrer">View full résumé <span class="material-symbols-outlined text-[17px]">arrow_outward</span></a>
+        </div>
+
+        <div class="space-y-4 lg:col-span-8" id="experienceAccordion">
+          <!-- Job 1 -->
+          <article class="exp-card overflow-hidden rounded-lg border border-line bg-white shadow-card" data-expanded="true">
+            <button class="exp-toggle focus-ring flex w-full items-start justify-between gap-5 p-6 text-left sm:p-7" aria-expanded="true">
+              <div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="rounded bg-razor px-2 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-white">Current</span>
+                  <span class="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-gray-500">Jul 2025 – Present · Fayetteville, AR</span>
+                </div>
+                <h3 class="mt-3 font-display text-2xl font-semibold uppercase">Assistant Director of Digital Marketing</h3>
+                <p class="mt-1 text-xs font-semibold uppercase tracking-[0.1em] text-razor">University of Arkansas</p>
+              </div>
+              <span class="material-symbols-outlined toggle-icon mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-mist text-[20px] leading-none" aria-hidden="true">remove</span>
+            </button>
+            <div class="exp-panel"><div><div class="border-t border-line px-6 pb-7 pt-5 sm:px-7"><ul class="space-y-2 text-[14px] leading-6 text-copy"><li>• Lead the athletic department’s email marketing and automation strategy to drive fan engagement and revenue through targeted campaigns</li><li>• Oversee mobile app marketing, including push notifications, live audio, and mobile content</li><li>• Manage and publish content across the department’s primary X, Instagram, and Facebook accounts</li></ul></div></div></div>
+          </article>
+
+          <!-- Job 2 -->
+          <article class="exp-card overflow-hidden rounded-lg border border-line bg-white shadow-card" data-expanded="true">
+            <button class="exp-toggle focus-ring flex w-full items-start justify-between gap-5 p-6 text-left sm:p-7" aria-expanded="true">
+              <div>
+                <div class="flex flex-wrap items-center gap-2"><span class="rounded bg-razor px-2 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-white">Current</span><span class="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-gray-500">Jan 2023 – Present · Multiple Locations</span></div>
+                <h3 class="mt-3 font-display text-2xl font-semibold uppercase">Official / Talent Statistician</h3>
+                <p class="mt-1 text-xs font-semibold uppercase tracking-[0.1em] text-razor">ESPN</p>
+              </div>
+              <span class="material-symbols-outlined toggle-icon mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-mist text-[20px] leading-none" aria-hidden="true">remove</span>
+            </button>
+            <div class="exp-panel"><div><div class="border-t border-line px-6 pb-7 pt-5 sm:px-7"><ul class="space-y-2 text-[14px] leading-6 text-copy"><li>• Research team storylines and statistics before each broadcast</li><li>• Confirm pregame, in-game, and postgame information for production crews and graphics producers</li><li>• Identify and communicate trends to announcers in real time while supporting the flow of the broadcast</li></ul></div></div></div>
+          </article>
+
+          <!-- Job 3 -->
+          <article class="exp-card overflow-hidden rounded-lg border border-line bg-white shadow-card" data-expanded="false">
+            <button class="exp-toggle focus-ring flex w-full items-start justify-between gap-5 p-6 text-left sm:p-7" aria-expanded="false">
+              <div><span class="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-gray-500">Aug 2023 – Jul 2025 · Fayetteville, AR</span><h3 class="mt-3 font-display text-2xl font-semibold uppercase">Athletic Business Office Assistant</h3><p class="mt-1 text-xs font-semibold uppercase tracking-[0.1em] text-razor">University of Arkansas</p></div>
+              <span class="material-symbols-outlined toggle-icon mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-mist text-[20px] leading-none" aria-hidden="true">add</span>
+            </button>
+            <div class="exp-panel"><div><div class="border-t border-line px-6 pb-7 pt-5 sm:px-7"><ul class="space-y-2 text-[14px] leading-6 text-copy"><li>• Supported daily business office operations, including invoice processing and payments for officials and referees</li><li>• Assisted with expense reports, travel, university credit and purchase cards, and special projects</li></ul></div></div></div>
+          </article>
+
+          <!-- Job 4 -->
+          <article class="exp-card overflow-hidden rounded-lg border border-line bg-white shadow-card" data-expanded="false">
+            <button class="exp-toggle focus-ring flex w-full items-start justify-between gap-5 p-6 text-left sm:p-7" aria-expanded="false">
+              <div><span class="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-gray-500">Aug 2022 – Jul 2025 · Fayetteville, AR</span><h3 class="mt-3 font-display text-2xl font-semibold uppercase">Athletic Communications Assistant</h3><p class="mt-1 text-xs font-semibold uppercase tracking-[0.1em] text-razor">University of Arkansas</p></div>
+              <span class="material-symbols-outlined toggle-icon mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-mist text-[20px] leading-none" aria-hidden="true">add</span>
+            </button>
+            <div class="exp-panel"><div><div class="border-t border-line px-6 pb-7 pt-5 sm:px-7"><ul class="space-y-2 text-[14px] leading-6 text-copy"><li>• Served as primary contact for men’s and women’s tennis and secondary contact for men’s basketball</li><li>• Supported women’s basketball as secondary contact during the 2023–24 season</li><li>• Wrote, edited, designed, and distributed game notes, previews, recaps, and press releases</li><li>• Managed program social accounts and produced content for the athletics website and social platforms</li></ul></div></div></div>
+          </article>
+
+          <!-- Job 5 -->
+          <article class="exp-card overflow-hidden rounded-lg border border-line bg-white shadow-card" data-expanded="false">
+            <button class="exp-toggle focus-ring flex w-full items-start justify-between gap-5 p-6 text-left sm:p-7" aria-expanded="false">
+              <div><span class="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-gray-500">Aug 2021 – May 2022 · Oklahoma City, OK</span><h3 class="mt-3 font-display text-2xl font-semibold uppercase">Sports Information Assistant</h3><p class="mt-1 text-xs font-semibold uppercase tracking-[0.1em] text-razor">Oklahoma Christian University</p></div>
+              <span class="material-symbols-outlined toggle-icon mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-mist text-[20px] leading-none" aria-hidden="true">add</span>
+            </button>
+            <div class="exp-panel"><div><div class="border-t border-line px-6 pb-7 pt-5 sm:px-7"><ul class="space-y-2 text-[14px] leading-6 text-copy"><li>• Handled in-game operational and statistical duties for baseball, basketball, soccer, softball, and volleyball</li><li>• Coordinated equipment setup and breakdown for university sports</li></ul></div></div></div>
+          </article>
+
+          <!-- Job 6 -->
+          <article class="exp-card overflow-hidden rounded-lg border border-line bg-white shadow-card" data-expanded="false">
+            <button class="exp-toggle focus-ring flex w-full items-start justify-between gap-5 p-6 text-left sm:p-7" aria-expanded="false">
+              <div><span class="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-gray-500">Jun 2021 – Aug 2022 · Oklahoma City, OK</span><h3 class="mt-3 font-display text-2xl font-semibold uppercase">Youth Basketball Coach</h3><p class="mt-1 text-xs font-semibold uppercase tracking-[0.1em] text-razor">Oklahoma City Thunder</p></div>
+              <span class="material-symbols-outlined toggle-icon mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-mist text-[20px] leading-none" aria-hidden="true">add</span>
+            </button>
+            <div class="exp-panel"><div><div class="border-t border-line px-6 pb-7 pt-5 sm:px-7"><ul class="space-y-2 text-[14px] leading-6 text-copy"><li>• Led drills, competitions, and scrimmages at camps serving approximately 40–50 kids</li><li>• Coached teams of 5–10 players across a variety of ages</li><li>• Built relationships with players, parents, and fellow coaches</li></ul></div></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="analytics" class="bg-paper px-5 py-20 sm:px-6 lg:px-8 lg:py-24">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-6 lg:grid-cols-12 lg:items-end">
+          <div class="lg:col-span-6">
+            <h2 class="font-display text-4xl font-semibold uppercase leading-tight">Education &amp; Applied Analytics</h2>
+          </div>
+          <p class="max-w-xl text-[15px] leading-7 text-copy lg:col-span-6 lg:justify-self-end">Academic rigor grounded in statistical reasoning, combined with demonstrated software tools and developing data science capabilities.</p>
+        </div>
+
+        <div class="mt-10 grid gap-5 md:grid-cols-2">
+          <article class="rounded-lg border border-line bg-white p-7 shadow-card">
+            <div class="flex flex-wrap items-center gap-2"><span class="rounded bg-razor px-2 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-white">Graduate Degree</span><span class="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-gray-500">In Progress · 2025 – Expected May 2027</span></div>
+            <h3 class="mt-5 font-display text-[27px] font-semibold uppercase leading-tight">Master of Science in Applied Business Analytics</h3>
+            <p class="mt-2 text-xs font-semibold uppercase tracking-[0.1em] text-razor">University of Arkansas</p>
+            <p class="mt-5 text-[14px] leading-7 text-copy">Curriculum: Predictive Analytics, Database Management &amp; SQL, Data Mining with Python/R, Statistical Modeling, Machine Learning foundations, and BI Visualization.</p>
+          </article>
+          <article class="rounded-lg border border-line bg-white p-7 shadow-card">
+            <div class="flex flex-wrap items-center gap-2"><span class="rounded bg-ink px-2 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-white">Undergraduate Degree</span><span class="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-gray-500">Completed</span></div>
+            <h3 class="mt-5 font-display text-[27px] font-semibold uppercase leading-tight">Bachelor of Business Administration in Sports Management</h3>
+            <p class="mt-2 text-xs font-semibold uppercase tracking-[0.1em] text-razor">Oklahoma Christian University</p>
+            <p class="mt-5 text-[14px] leading-7 text-copy">Comprehensive grounding in athletic administration, sports marketing, sports information governance, and event operations.</p>
+          </article>
+        </div>
+
+        <div class="mt-6 grid gap-5 lg:grid-cols-3">
+          <article class="rounded-lg border border-line bg-white p-6 shadow-card">
+            <div class="flex items-center justify-between border-b border-line pb-4"><h3 class="font-mono text-[11px] font-bold uppercase tracking-[0.15em]">Data Analytics</h3><span class="rounded border border-blue-200 bg-blue-50 px-2 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-blue-900">Developing</span></div>
+            <div class="divide-y divide-line"><div class="py-3.5 text-[14px] font-medium">Tableau</div><div class="py-3.5 text-[14px] font-medium">Power BI</div><div class="py-3.5 text-[14px] font-medium">R</div><div class="py-3.5 text-[14px] font-medium">Python</div><div class="py-3.5 text-[14px] font-medium">SQL</div></div>
+            <p class="border-t border-line pt-4 text-xs leading-5 text-copy">These tools are in progress through graduate study and continued practice.</p>
+          </article>
+
+          <article class="rounded-lg border border-line bg-white p-6 shadow-card">
+            <div class="flex items-center justify-between border-b border-line pb-4"><h3 class="font-mono text-[11px] font-bold uppercase tracking-[0.15em]">Applied Experience</h3><span class="rounded border border-red-200 bg-red-50 px-2 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-razor">In Use</span></div>
+            <div class="divide-y divide-line"><div class="py-3.5 text-[14px] font-medium">Microsoft 365</div><div class="py-3.5 text-[14px] font-medium">Oracle Eloqua</div><div class="py-3.5 text-[14px] font-medium">Mobile app marketing (WMT)</div><div class="py-3.5 text-[14px] font-medium">Real-time statistics</div><div class="py-3.5 text-[14px] font-medium">Audience-focused content</div></div>
+            <p class="border-t border-line pt-4 text-xs leading-5 text-copy">Tools and contexts already used across athletics, marketing, communications, and broadcast work.</p>
+          </article>
+
+          <div class="grid gap-5">
+            <article class="rounded-lg border border-line bg-white p-5 shadow-card"><h3 class="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-razor">Marketing Technology</h3><div class="mt-3 text-[14px] leading-6 text-copy"><div>Email Marketing &amp; Automation: Oracle Eloqua</div><div class="mt-2">Mobile App (WMT)</div><div class="pl-4">- Push Notifications, Live Audio, Mobile Content</div></div></article>
+            <article class="rounded-lg border border-line bg-white p-5 shadow-card"><h3 class="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-razor">Creative &amp; Communication</h3><p class="mt-3 text-[14px] leading-6 text-copy">Adobe Photoshop · Adobe InDesign · Microsoft Excel, Word, PowerPoint · Social Media</p></article>
+            <article class="rounded-lg border border-line bg-white p-5 shadow-card"><h3 class="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-razor">Professional Strengths</h3><p class="mt-3 text-[14px] leading-6 text-copy">Cross-functional collaboration · Stakeholder management · Communication · Organization</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="interests" class="bg-mist px-5 py-20 sm:px-6 lg:px-8 lg:py-24">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-5 lg:grid-cols-12 lg:items-end">
+          <div class="lg:col-span-6"><h2 class="font-display text-4xl font-semibold uppercase leading-tight">Sports &amp; Data Interests</h2></div>
+          <p class="max-w-xl text-[15px] leading-7 text-copy lg:col-span-6 lg:justify-self-end">Core focus areas where quantitative analysis strengthens sports storytelling, decision-making, and competitive performance.</p>
+        </div>
+
+        <div class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <article class="interest-card relative overflow-hidden rounded-lg border border-line bg-white p-6 shadow-card transition duration-200 hover:-translate-y-1 hover:shadow-lift">
+            <div class="flex h-11 w-11 items-center justify-center rounded-md bg-mist text-razor"><span class="material-symbols-outlined">campaign</span></div>
+            <h3 class="mt-5 font-display text-xl font-semibold uppercase leading-tight">Fan Engagement &amp; Digital Marketing</h3>
+            <p class="mt-4 text-[14px] leading-6 text-copy">Using behavioral data to analyze student attendance trends, gameday ticket demand, and social content performance across collegiate athletics.</p>
+          </article>
+          <article class="interest-card relative overflow-hidden rounded-lg border border-line bg-white p-6 shadow-card transition duration-200 hover:-translate-y-1 hover:shadow-lift">
+            <div class="flex h-11 w-11 items-center justify-center rounded-md bg-mist text-razor"><span class="material-symbols-outlined">live_tv</span></div>
+            <h3 class="mt-5 font-display text-xl font-semibold uppercase leading-tight">Broadcast &amp; Real-Time Storytelling</h3>
+            <p class="mt-4 text-[14px] leading-6 text-copy">Connecting live-game context with historical comparisons to provide on-air talent, viewers, and media teams with meaningful real-time insights.</p>
+          </article>
+          <article class="interest-card relative overflow-hidden rounded-lg border border-line bg-white p-6 shadow-card transition duration-200 hover:-translate-y-1 hover:shadow-lift">
+            <div class="flex h-11 w-11 items-center justify-center rounded-md bg-mist text-razor"><span class="material-symbols-outlined">scoreboard</span></div>
+            <h3 class="mt-5 font-display text-xl font-semibold uppercase leading-tight">In-Game Performance &amp; Scoring</h3>
+            <p class="mt-4 text-[14px] leading-6 text-copy">Analyzing red-zone efficiency, fourth-down decision-making, shot quality vs. shot-making, and crunch-time possession outcomes.</p>
+          </article>
+          <article class="interest-card relative overflow-hidden rounded-lg border border-line bg-white p-6 shadow-card transition duration-200 hover:-translate-y-1 hover:shadow-lift">
+            <div class="flex h-11 w-11 items-center justify-center rounded-md bg-mist text-razor"><span class="material-symbols-outlined">query_stats</span></div>
+            <h3 class="mt-5 font-display text-xl font-semibold uppercase leading-tight">Sports Analytics &amp; Modeling</h3>
+            <p class="mt-4 text-[14px] leading-6 text-copy">Exploring predictive models including Expected Points Added (EPA), win probability, and roster valuation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="bg-paper px-5 py-20 sm:px-6 lg:px-8 lg:py-24">
+      <div class="mx-auto max-w-7xl overflow-hidden rounded-2xl bg-ink p-7 text-white shadow-lift sm:p-10 lg:p-12">
+        <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
+          <div class="lg:col-span-7"><h2 class="max-w-3xl font-display text-4xl font-semibold uppercase leading-tight">Let's talk about sports, data, and the connections between them.</h2></div>
+          <p class="max-w-xl text-[15px] leading-7 text-slate-300 lg:col-span-5 lg:justify-self-end">Whether evaluating athletic opportunities, discussing sports data projects, or exploring business intelligence initiatives — I would love to connect with you.</p>
+        </div>
+
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <a href="mailto:rgregg@uark.edu" class="focus-ring group rounded-lg border border-white/10 bg-ink2 p-5 transition hover:-translate-y-0.5 hover:border-[#ffb3b5]/60 hover:bg-[#1c304c]"><div class="flex items-center justify-between"><span class="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[#d4e3ff]">Email</span><span class="material-symbols-outlined text-[19px] text-[#ffb3b5]">mail</span></div><div class="mt-5 font-display text-lg uppercase">rgregg@uark.edu</div><div class="mt-4 text-xs font-semibold uppercase tracking-[0.1em] text-[#ffb3b5]">Send Email →</div></a>
+          <a href="https://drive.google.com/file/d/1bzS2hDfV2D6RA1pTnTsYyfRQ00kZHzta/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="focus-ring group rounded-lg border border-white/10 bg-ink2 p-5 transition hover:-translate-y-0.5 hover:border-[#ffb3b5]/60 hover:bg-[#1c304c]"><div class="flex items-center justify-between"><span class="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[#d4e3ff]">Résumé</span><span class="material-symbols-outlined text-[19px] text-[#ffb3b5]">description</span></div><div class="mt-5 font-display text-lg uppercase">Official Résumé</div><div class="mt-4 text-xs font-semibold uppercase tracking-[0.1em] text-[#ffb3b5]">View / Download PDF →</div></a>
+          <a href="https://www.linkedin.com/in/robert-gregg-a1567716a/" target="_blank" rel="noopener noreferrer" class="focus-ring group rounded-lg border border-white/10 bg-ink2 p-5 transition hover:-translate-y-0.5 hover:border-[#ffb3b5]/60 hover:bg-[#1c304c]"><div class="flex items-center justify-between"><span class="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[#d4e3ff]">Networking</span><span class="material-symbols-outlined text-[19px] text-[#ffb3b5]">share</span></div><div class="mt-5 font-display text-lg uppercase">LinkedIn</div><div class="mt-4 text-xs font-semibold uppercase tracking-[0.1em] text-[#ffb3b5]">Connect on LinkedIn →</div></a>
+          <a href="https://x.com/rcgpart3" target="_blank" rel="noopener noreferrer" class="focus-ring group rounded-lg border border-white/10 bg-ink2 p-5 transition hover:-translate-y-0.5 hover:border-[#ffb3b5]/60 hover:bg-[#1c304c]"><div class="flex items-center justify-between"><span class="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[#d4e3ff]">X / Twitter</span><span class="material-symbols-outlined text-[19px] text-[#ffb3b5]">chat</span></div><div class="mt-5 font-display text-lg uppercase">@rcgpart3</div><div class="mt-4 text-xs font-semibold uppercase tracking-[0.1em] text-[#ffb3b5]">Follow on X →</div></a>
+          <a href="https://www.instagram.com/rcgpart3/" target="_blank" rel="noopener noreferrer" class="focus-ring group rounded-lg border border-white/10 bg-ink2 p-5 transition hover:-translate-y-0.5 hover:border-[#ffb3b5]/60 hover:bg-[#1c304c]"><div class="flex items-center justify-between"><span class="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[#d4e3ff]">Instagram</span><span class="material-symbols-outlined text-[19px] text-[#ffb3b5]">photo_camera</span></div><div class="mt-5 font-display text-lg uppercase">@rcgpart3</div><div class="mt-4 text-xs font-semibold uppercase tracking-[0.1em] text-[#ffb3b5]">Instagram Profile →</div></a>
+          <a href="https://www.facebook.com/robert.gregg.758818" target="_blank" rel="noopener noreferrer" class="focus-ring group rounded-lg border border-white/10 bg-ink2 p-5 transition hover:-translate-y-0.5 hover:border-[#ffb3b5]/60 hover:bg-[#1c304c]"><div class="flex items-center justify-between"><span class="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[#d4e3ff]">Facebook</span><span class="material-symbols-outlined text-[19px] text-[#ffb3b5]">public</span></div><div class="mt-5 font-display text-lg uppercase">Robert Gregg</div><div class="mt-4 text-xs font-semibold uppercase tracking-[0.1em] text-[#ffb3b5]">Facebook Profile →</div></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-line bg-mist px-5 py-8 sm:px-6 lg:px-8">
+    <div class="mx-auto flex max-w-7xl flex-col gap-3 text-xs text-copy sm:flex-row sm:items-center sm:justify-between">
+      <span>© 2026 Robert Gregg</span>
+      <span class="font-mono uppercase tracking-[0.1em]">Sports Expertise &amp; Data Analysis</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuButton.addEventListener('click', () => {
+      const open = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!open));
+      mobileMenu.classList.toggle('hidden');
+      menuButton.querySelector('.material-symbols-outlined').textContent = open ? 'menu' : 'close';
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.querySelector('.material-symbols-outlined').textContent = 'menu';
+      });
+    });
+
+    document.querySelectorAll('.exp-card').forEach(card => {
+      const button = card.querySelector('.exp-toggle');
+      const icon = card.querySelector('.toggle-icon');
+      button.addEventListener('click', () => {
+        const expanded = card.getAttribute('data-expanded') === 'true';
+        const nextExpanded = !expanded;
+        card.setAttribute('data-expanded', String(nextExpanded));
+        button.setAttribute('aria-expanded', String(nextExpanded));
+        icon.textContent = nextExpanded ? 'remove' : 'add';
+      });
+    });
+
+    const navLinks = [...document.querySelectorAll('.nav-link')];
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter(e => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${visible.target.id}`));
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: [0.01, 0.25, 0.5] });
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
