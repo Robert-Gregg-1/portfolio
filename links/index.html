@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000e23">
+  <meta name="description" content="Robert Gregg — sports marketing, broadcast statistics, and applied business analytics.">
+  <title>Robert Gregg | Sports, Data & Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper:#f8f9ff;
+      --mist:#f0f4fc;
+      --line:#d8dde7;
+      --ink:#000e23;
+      --ink-2:#14243a;
+      --razor:#ad2e40;
+      --razor-dark:#8c1f30;
+      --copy:#44474d;
+      --muted:#6b7280;
+      --white:#ffffff;
+      --shadow:0 12px 35px rgba(0,14,35,.08),0 2px 8px rgba(0,14,35,.04);
+      --shadow-soft:0 6px 20px rgba(0,14,35,.06),0 1px 4px rgba(0,14,35,.04);
+      --radius:16px;
+    }
+
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--copy);
+      background:
+        radial-gradient(circle at 102% -3%, rgba(173,46,64,.08) 0 115px, transparent 116px),
+        radial-gradient(circle at -16% 48%, rgba(0,14,35,.045) 0 145px, transparent 146px),
+        var(--paper);
+      font-family:"Inter",sans-serif;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+
+    a { color:inherit; text-decoration:none; }
+    button { font:inherit; }
+
+    .page {
+      width:min(100% - 28px, 480px);
+      margin:0 auto;
+      padding:max(22px, env(safe-area-inset-top)) 0 max(28px, env(safe-area-inset-bottom));
+    }
+
+    .eyebrow,
+    .section-label,
+    .chip,
+    .micro {
+      font-family:"IBM Plex Mono",monospace;
+      text-transform:uppercase;
+      letter-spacing:.09em;
+    }
+
+    .topline {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin:0 2px 12px;
+      color:var(--muted);
+      font-size:10px;
+      font-weight:700;
+    }
+
+    .topline a {
+      color:var(--razor);
+      transition:color .18s ease;
+    }
+    .topline a:hover { color:var(--razor-dark); }
+
+		.hero {
+      position:relative;
+      overflow:hidden;
+      background:rgba(255,255,255,.96);
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+
+    .hero::before {
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:4px;
+      background:linear-gradient(90deg,var(--razor),var(--ink-2),var(--ink));
+    }
+
+    .hero-head {
+      display:flex;
+      align-items:flex-start;
+      gap:15px;
+    }
+
+    .avatar {
+      width:72px;
+      height:72px;
+      flex:0 0 72px;
+      border-radius:15px;
+      overflow:hidden;
+      background:var(--ink-2);
+      border:1px solid var(--line);
+      box-shadow:0 6px 16px rgba(0,14,35,.12);
+      display:grid;
+      place-items:center;
+    }
+
+    .avatar img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:50% 0%;
+      display:block;
+    }
+
+    .avatar-fallback {
+      display:none;
+      color:white;
+      font:700 24px/1 "Oswald",sans-serif;
+      letter-spacing:.04em;
+    }
+
+    .identity { min-width:0; padding-top:2px; }
+    h1 {
+      margin:0;
+      color:var(--ink);
+      font:700 30px/1 "Oswald",sans-serif;
+      letter-spacing:-.02em;
+      text-transform:uppercase;
+    }
+
+    .role {
+      margin:7px 0 0;
+      color:var(--razor);
+      font-size:12px;
+      font-weight:700;
+      line-height:1.3;
+      text-transform:uppercase;
+      letter-spacing:.07em;
+    }
+
+		.org {
+      margin:4px 0 0;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    .credential {
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      margin-top:17px;
+      padding:7px 9px;
+      background:var(--mist);
+      border:1px solid var(--line);
+      border-radius:8px;
+      color:var(--ink);
+      font:600 10.5px/1.2 "IBM Plex Mono",monospace;
+    }
+
+    .credential svg { width:16px; height:16px; color:var(--razor); flex:0 0 auto; }
+
+    .mission {
+      margin:13px 0 0;
+      padding-top:13px;
+      border-top:1px solid rgba(216,221,231,.8);
+      color:var(--copy);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    .primary-actions {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:9px;
+      margin-top:12px;
+    }
+
+    .action {
+      min-height:49px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:11px 13px;
+      font:600 12px/1 "Oswald",sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      transition:transform .16s ease, box-shadow .16s ease, background .16s ease, border-color .16s ease;
+      cursor:pointer;
+      text-align:center;
+    }
+
+    .action:hover { transform:translateY(-1px); }
+    .action:active { transform:translateY(0); }
+    .action svg { width:18px; height:18px; flex:0 0 auto; }
+
+    .action-dark {
+      background:var(--ink);
+      color:white;
+      box-shadow:var(--shadow-soft);
+      border:1px solid var(--ink);
+    }
+    .action-dark:hover { background:var(--ink-2); }
+
+		.action-light {
+      background:white;
+      color:var(--ink);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow-soft);
+    }
+    .action-light:hover { border-color:#afb7c5; }
+
+    .section-label {
+      display:block;
+      margin:22px 3px 9px;
+      color:var(--muted);
+      font-size:9.5px;
+      font-weight:700;
+    }
+
+    .links {
+      display:flex;
+      flex-direction:column;
+      gap:9px;
+    }
+
+    .link-card {
+      min-height:66px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:11px 13px;
+      background:rgba(255,255,255,.96);
+      border:1px solid var(--line);
+      border-radius:14px;
+      box-shadow:var(--shadow-soft);
+      transition:transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+    }
+
+    .link-card:hover {
+      transform:translateY(-1px);
+      border-color:#b9c0cc;
+      box-shadow:0 8px 22px rgba(0,14,35,.075);
+    }
+
+    .link-left {
+      min-width:0;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .icon-box {
+      width:42px;
+      height:42px;
+      flex:0 0 42px;
+      display:grid;
+      place-items:center;
+      border-radius:11px;
+      color:white;
+      background:var(--ink);
+    }
+
+    .icon-box.light {
+      background:var(--mist);
+      border:1px solid var(--line);
+      color:var(--razor);
+    }
+    .icon-box.linkedin { background:#0A66C2; }
+    .icon-box.facebook { background:#1877F2; }
+    .icon-box.instagram { background:linear-gradient(135deg,#f09433,#dc2743 48%,#bc1888); }
+    .icon-box svg { width:20px; height:20px; display:block; margin:auto; }
+
+		.link-copy { min-width:0; }
+    .link-title {
+      color:var(--ink);
+      font:600 16px/1.08 "Oswald",sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.025em;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .link-subtitle {
+      margin-top:4px;
+      color:var(--muted);
+      font-size:10.5px;
+      font-weight:600;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .featured {
+      display:inline-flex;
+      vertical-align:middle;
+      margin-left:6px;
+      transform:translateY(-1px);
+      padding:3px 5px;
+      background:var(--razor);
+      color:white;
+      border-radius:5px;
+      font:700 8px/1 "IBM Plex Mono",monospace;
+      letter-spacing:.08em;
+    }
+
+    .arrow {
+      width:18px;
+      height:18px;
+      flex:0 0 auto;
+      color:#8b94a2;
+      transition:transform .16s ease,color .16s ease;
+    }
+    .link-card:hover .arrow { transform:translate(1px,-1px); color:var(--razor); }
+
+    .save-contact-wrap {
+      margin-top:18px;
+    }
+
+    .save-contact-btn {
+      width:100%;
+      min-height:52px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      padding:13px 16px;
+      border:1px solid var(--ink);
+      border-radius:13px;
+      background:var(--ink);
+      color:white;
+      box-shadow:var(--shadow-soft);
+      cursor:pointer;
+      font:600 12px/1 "Oswald",sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.07em;
+      text-align:center;
+      transition:transform .16s ease, background .16s ease, box-shadow .16s ease;
+    }
+
+		.save-contact-btn:hover {
+      transform:translateY(-1px);
+      background:var(--ink-2);
+      box-shadow:var(--shadow);
+    }
+
+    .save-contact-btn:active { transform:translateY(0); }
+    .save-contact-btn svg { width:18px; height:18px; display:block; flex:0 0 auto; }
+
+    footer {
+      margin-top:22px;
+      padding:16px 4px 2px;
+      border-top:1px solid var(--line);
+      text-align:center;
+    }
+    footer a {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      color:var(--razor);
+      font:600 11px/1 "Oswald",sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+    footer p {
+      margin:10px 0 0;
+      color:var(--muted);
+      font:500 9.5px/1.4 "IBM Plex Mono",monospace;
+    }
+
+    .toast {
+      position:fixed;
+      left:50%;
+      bottom:calc(18px + env(safe-area-inset-bottom));
+      transform:translate(-50%,18px);
+      opacity:0;
+      pointer-events:none;
+      z-index:50;
+      background:var(--ink);
+      color:white;
+      border-radius:999px;
+      padding:9px 13px;
+      box-shadow:var(--shadow);
+      font:600 10px/1 "IBM Plex Mono",monospace;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      transition:opacity .2s ease,transform .2s ease;
+    }
+    .toast.show { opacity:1; transform:translate(-50%,0); }
+
+    :focus-visible {
+      outline:3px solid rgba(173,46,64,.28);
+      outline-offset:3px;
+    }
+
+    @media (max-width:360px) {
+      .page { width:min(100% - 20px,480px); }
+      .hero { padding:18px; }
+      .avatar { width:64px; height:64px; flex-basis:64px; }
+      h1 { font-size:27px; }
+    }
+
+    @media (min-width:700px) {
+      .page { padding-top:34px; padding-bottom:38px; }
+      .hero { padding:24px; }
+      .link-card { min-height:70px; }
+    }
+
+		@media (prefers-reduced-motion:reduce) {
+      *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topline eyebrow">
+      <span>Sports Expertise &amp; Data Analysis</span>
+      <a href="../" aria-label="Open full portfolio">Full Site ↗</a>
+    </div>
+
+    <section class="hero" aria-labelledby="name">
+      <div class="hero-head">
+        <div class="avatar">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6-4CrK9FburGdpX-qbzlLL2gmapBzUSUdtWs60CRjHW8zE_Gf-XgH1gnH4M45X7lkk-Uy2myD_FgswsJHp8OJdjXaalJBY9hk4GBl_vUbtewozDZBtTfKqPkC_nQSh7827mewrzmyRAlmdodFUKdhEhgAoJKZh4FbONIsEe5v6EYCntX1AU3x2lkIehsR3ubSlZTWYD4TtP-vdv7VDRJRJnNTkwiRYHW9EMqBVR_LvMGvum_iXTBP9e46OruVYNEcWw" alt="Robert Gregg" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="avatar-fallback" aria-hidden="true">RG</span>
+        </div>
+        <div class="identity">
+          <h1 id="name">Robert Gregg</h1>
+          <p class="role">Assistant Director of Digital Marketing</p>
+          <p class="org">University of Arkansas • Fayetteville, AR</p>
+        </div>
+      </div>
+
+      <div class="credential">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M2 10l10-5 10 5-10 5L2 10Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/><path d="M22 10v6"/></svg>
+        <span>M.S. Applied Business Analytics · May 2027</span>
+      </div>
+
+      <p class="mission">Connecting sports marketing, live-game information, and applied analytics to support smarter decisions and stronger storytelling.</p>
+    </section>
+
+    <div class="primary-actions" aria-label="Quick contact actions">
+      <a class="action action-dark" href="mailto:rgregg@uark.edu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="m4 7 8 6 8-6"/></svg>
+        Email Me
+      </a>
+      <a class="action action-light" href="tel:4795752000">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M6.5 3.5 9 8l-2 2c1.5 3 4 5.5 7 7l2-2 4.5 2.5c-.6 2.2-2.4 3.5-4.5 3.5C9.4 21 3 14.6 3 8c0-2.1 1.3-3.9 3.5-4.5Z"/></svg>
+        Call / Text
+      </a>
+    </div>
+
+    <span class="section-label">Start Here</span>
+    <nav class="links" aria-label="Primary professional links">
+      <a class="link-card" href="https://robert-gregg-1.github.io/portfolio/" target="_blank" rel="noopener noreferrer">
+        <div class="link-left">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v12H4z"/><path d="M2 20h20M9 17v3m6-3v3"/></svg>
+          </div>
+          <div class="link-copy">
+            <div class="link-title">Personal Portfolio <span class="featured">Featured</span></div>
+            <div class="link-subtitle">Experience, analytics, and career direction</div>
+          </div>
+        </div>
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+
+      <a class="link-card" href="https://drive.google.com/file/d/1bzS2hDfV2D6RA1pTnTsYyfRQ00kZHzta/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <div class="link-left">
+          <div class="icon-box light">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5M9 13h6m-6 4h6"/></svg>
+          </div>
+          <div class="link-copy">
+            <div class="link-title">Official Résumé</div>
+            <div class="link-subtitle">View professional experience and skills</div>
+          </div>
+        </div>
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+
+			<a class="link-card" href="https://www.linkedin.com/in/robert-gregg-a1567716a/" target="_blank" rel="noopener noreferrer">
+        <div class="link-left">
+          <div class="icon-box linkedin">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.2 3.8A2.2 2.2 0 1 1 5.2 8.2a2.2 2.2 0 0 1 0-4.4ZM3.3 9.8h3.8V21H3.3V9.8Zm6.1 0H13v1.5h.1c.5-.9 1.7-1.9 3.6-1.9 3.9 0 4.6 2.5 4.6 5.9V21h-3.8v-5c0-1.2 0-2.8-1.7-2.8-1.8 0-2 1.3-2 2.7V21H10V9.8Z"/></svg>
+          </div>
+          <div class="link-copy">
+            <div class="link-title">LinkedIn</div>
+            <div class="link-subtitle">Connect professionally</div>
+          </div>
+        </div>
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+    </nav>
+
+    <span class="section-label">Social</span>
+    <nav class="links" aria-label="Social profiles">
+      <a class="link-card" href="https://x.com/rcgpart3" target="_blank" rel="noopener noreferrer">
+        <div class="link-left">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.2 2h3.7l-8.1 9.3L23.3 22h-7.4l-5.8-7.6L3.4 22H-.3l8.6-9.8L-.7 2h7.6l5.2 6.9L18.2 2Zm-1.3 18.1h2L5.8 3.8H3.7l13.2 16.3Z"/></svg>
+          </div>
+          <div class="link-copy"><div class="link-title">X / Twitter</div><div class="link-subtitle">@rcgpart3</div></div>
+        </div>
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+
+      <a class="link-card" href="https://www.instagram.com/rcgpart3/" target="_blank" rel="noopener noreferrer">
+        <div class="link-left">
+          <div class="icon-box instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <div class="link-copy"><div class="link-title">Instagram</div><div class="link-subtitle">@rcgpart3</div></div>
+        </div>
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+
+      <a class="link-card" href="https://www.facebook.com/robert.gregg.758818" target="_blank" rel="noopener noreferrer">
+        <div class="link-left">
+          <div class="icon-box facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.1 22v-9h3l.5-3.5h-3.5V7.3c0-1 .3-1.7 1.8-1.7h1.9V2.5c-.3 0-1.4-.1-2.7-.1-2.7 0-4.6 1.7-4.6 4.7v2.6H7.4V13h3.1v9h3.6Z"/></svg>
+          </div>
+          <div class="link-copy"><div class="link-title">Facebook</div><div class="link-subtitle">Robert Gregg</div></div>
+        </div>
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+    </nav>
+
+    <div class="save-contact-wrap">
+      <button class="save-contact-btn" id="vcardBtn" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4"/><path d="M5 15v5h14v-5"/></svg>
+        <span>Save Contact</span>
+      </button>
+    </div>
+
+    <footer>
+      <a href="../">← Back to Full Portfolio</a>
+      <p>© 2026 Robert Gregg · Sports Expertise &amp; Data Analysis</p>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Contact card saved</div>
+
+  <script>
+    const toast = document.getElementById('toast');
+    let toastTimer;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+
+    document.getElementById('vcardBtn').addEventListener('click', () => {
+      const vcard = `BEGIN:VCARD\nVERSION:3.0\nN:Gregg;Robert;;;\nFN:Robert Gregg\nORG:University of Arkansas Athletics\nTITLE:Assistant Director of Digital Marketing\nEMAIL;TYPE=INTERNET,WORK:rgregg@uark.edu\nTEL;TYPE=CELL:4795752000\nURL:https://robert-gregg-1.github.io/portfolio/\nNOTE:M.S. Applied Business Analytics (May 2027) | Official / Talent Statistician, ESPN\nEND:VCARD`;
+      const blob = new Blob([vcard], { type:'text/vcard;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'Robert_Gregg.vcf';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+      showToast('Contact card saved');
